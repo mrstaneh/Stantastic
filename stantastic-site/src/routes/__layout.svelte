@@ -1,9 +1,18 @@
 <script>
     import Nav from "$lib/Nav.svelte";
+    import { onMount } from 'svelte';
+
+    let loading = false;
+
+    onMount(async () => {
+        loading = true;
+    })
 </script>
 
-<Nav/>
+{#if loading}
+    <Nav/>
 
-<main>
-    <slot />
-</main>
+    <main>
+        <slot />
+    </main>
+{/if}

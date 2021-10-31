@@ -1,27 +1,39 @@
 <script>
+    import { goto } from '$app/navigation';
     import { getStores } from '$app/stores';
+
     const { page } = getStores();
 
     $: innerWidth = 0;
     
     let pageName = undefined;
+    let showDropdown = true;
+
+    let pages = [
+        {name: 'Home', route: '/'},
+        {name: 'About', route: '/about'},
+        {name: 'Portfolio', route: '/portfolio'},
+        {name: 'Contact', route: '/contact'}
+    ]
 
     page.subscribe(({path}) => {
-        switch(path){
-            case '/':
-                pageName = 'Home';
-                break;
-            case '/about':
-                pageName = 'About';
-                break;
-            case '/portfolio':
-                pageName = 'Portfolio';
-                break;
-            case '/contact':
-                pageName = 'Contact';
-                break;
+        for(let i = 0; i < pages.length; i++){
+            if(path == pages[i].route){
+                pageName = pages[i].name;
+            }
         }
     })
+
+    function onNavDropdownClick(){
+        showDropdown = !showDropdown;
+    }
+
+    function onItemClick(route){
+        if(route != pages.filter(i => i.name == pageName)[0].route){
+            goto(route);
+            showDropdown = false;
+        }
+    }
 </script>
 
 <svelte:window bind:innerWidth />
@@ -39,28 +51,39 @@
     {#if innerWidth > 489}
         <div class="nav-pages">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/contact">Contact</a></li>
+                {#each pages as page}
+                    <li><a href="{page.route}">{page.name}</a></li>
+                {/each}
             </ul>
         </div>
     {/if}
     {#if innerWidth > 627}
         <div class="nav-spotlight">
-            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/"><i class="fa-brands fa-linkedin social-icon"></i></a>
-            <a href="https://github.com/mrstaneh"><i class="fa-brands fa-github social-icon"></i></a>
+            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
+            <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
         </div>
     {/if}
     {#if innerWidth < 490}
-        <div class="nav-small-button">
+        <div class="nav-small-button" on:click={onNavDropdownClick}>
             <span class="nav-currentpage-text">{pageName}</span>
             <i class="fa-solid fa-angle-down"></i>
         </div>
     {/if}
 </div>
 
-{innerWidth}
+{#if showDropdown && innerWidth < 490}
+    <div class="nav-dropdown-menu">
+        <ul>
+            {#each pages as page}
+                <li on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
+            {/each}
+        </ul>
+        <div class="nav-dropdown-icons">
+            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
+            <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image"></i></a>
+        </div>
+    </div>
+{/if}
 
 <style>
     .nav{
@@ -75,7 +98,7 @@
         display: flex;
         align-items: center;
         margin-left: 22px;
-        margin-bottom: 3px;
+        padding-bottom: 3px;
         margin-right: 22px;
     }
 
@@ -90,6 +113,7 @@
         font-size: 36px;
         color: #4A4A55;
         text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .nav-pages{
@@ -105,7 +129,7 @@
         list-style: none;
     }
 
-    li a{
+    .nav-pages ul li a{
         text-decoration: none;
         margin-right: 1em;
         font-family: 'Titillium Web', sans-serif;
@@ -148,7 +172,7 @@
         display: flex;
         align-items: center;
         justify-content: end;
-        margin-right: 22px;
+        padding-right: 22px;
     }
 
     .fa-angle-down{
@@ -158,6 +182,7 @@
 
     .nav-small-button{
         cursor: pointer;
+        -webkit-tap-highlight-color: rgba(74, 74, 85, .2);
     }
 
     .nav-small-button:hover .nav-currentpage-text{
@@ -173,5 +198,74 @@
         color: #4A4A55;
         font-size: 18px;
         margin-right: 8px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .nav-dropdown-menu{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+        border: 1px solid #4A4A55;
+        border-radius: 4px;
+        margin-top: 5px;
+        right: 5px;
+        width: 40%;
+        
+    }
+
+    .nav-dropdown-menu ul{
+        padding-inline-start: 0;
+        list-style: none;
+        margin-block-start: 0.5em;
+        margin-block-end: 0.5em;
+    }
+
+    .nav-dropdown-menu ul li{
+        text-align: center;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(74, 74, 85, .2);
+    }
+
+    .nav-dropdown-menu ul li:hover a{
+        color: rgb(105, 105, 121);
+    }
+
+    .nav-dropdown-menu ul li a {
+        text-decoration: none;
+        font-family: 'Titillium Web', sans-serif;
+        color: #4A4A55;
+        font-size: 24px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .nav-dropdown-menu ul li a:hover {
+        color: rgb(105, 105, 121);
+    }
+
+    .nav-dropdown-icons{
+        border-top: 1px solid #4A4A55;
+        padding-top: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .dropdown-icon-image{
+        font-size: 36px;
+        margin-right: 8px;
+        margin-left: 8px;
     }
 </style>
