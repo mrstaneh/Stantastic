@@ -7,7 +7,7 @@
     $: innerWidth = 0;
     
     let pageName = undefined;
-    let showDropdown = true;
+    let showDropdown = false;
 
     let pages = [
         {name: 'Home', route: '/'},
@@ -72,6 +72,7 @@
 </div>
 
 {#if showDropdown && innerWidth < 490}
+    <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
     <div class="nav-dropdown-menu">
         <ul>
             {#each pages as page}
@@ -204,6 +205,12 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+    }
+
+    .nav-dropdown-backdrop{
+        position: absolute;
+        height: calc(100% - 60px);
+        width: 100%;
     }
 
     .nav-dropdown-menu{
