@@ -29,7 +29,8 @@
                     <li>Python</li>
                 </ul>
             </div>
-            <img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>        </div>
+            <img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>        
+        </div>
     </section>
 </div>
 

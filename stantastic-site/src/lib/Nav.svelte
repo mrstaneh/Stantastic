@@ -1,14 +1,14 @@
 <script>
     import { goto } from '$app/navigation';
-    import { getStores } from '$app/stores';
     import { expoOut } from 'svelte/easing';
-
-    const { page } = getStores();
+    import { onMount } from 'svelte';
 
     $: innerWidth = 0;
+    $: pageName = pages.filter(i => i.route == page.path)[0].name;
     
-    let pageName = undefined;
     let showDropdown = false;
+    let loaded = false;
+    export let page = undefined;
 
     let pages = [
         {name: 'Home', route: '/'},
@@ -16,14 +16,6 @@
         {name: 'Portfolio', route: '/portfolio'},
         {name: 'Contact', route: '/contact'}
     ]
-
-    page.subscribe(({path}) => {
-        for(let i = 0; i < pages.length; i++){
-            if(path == pages[i].route){
-                pageName = pages[i].name;
-            }
-        }
-    })
 
     function onNavDropdownClick(){
         showDropdown = !showDropdown;
@@ -37,7 +29,6 @@
     }
 
     function dropdownin(node, {duration}) {
-        console.log('yeet');
 		return {
             duration,
 			css: t => {
@@ -52,7 +43,6 @@
     };
 
     function dropdownout(node, {duration}) {
-        console.log('yeet');
 		return {
             duration,
 			css: t => {
@@ -65,60 +55,66 @@
 			}
 		}
     };
+
+    onMount(async () => {
+        loaded = true;
+    });
 </script>
 
 <svelte:window bind:innerWidth />
-
-<div class="nav">
-    <div class="nav-title">
-        {#if innerWidth > 546}
-            <img src="android-chrome-512x512.png" alt="logo"/>
+    <div class="nav">
+        <div class="nav-title">
+            {#if innerWidth > 546}
+                <img src="android-chrome-512x512.png" alt="logo"/>
+            {/if}
+            {#if innerWidth < 490 && innerWidth > 363}
+                <img src="android-chrome-512x512.png" alt="logo"/>
+            {/if}
+            <a href="/">Stantastic</a>
+        </div>
+        {#if innerWidth > 489}
+            <div class="nav-pages">
+                <ul>
+                    {#each pages as page}
+                        <li><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
+                    {/each}
+                </ul>
+            </div>
         {/if}
-        {#if innerWidth < 490 && innerWidth > 363}
-            <img src="android-chrome-512x512.png" alt="logo"/>
+        {#if innerWidth > 627}
+            <div class="nav-spotlight">
+                <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
+                <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
+            </div>
         {/if}
-        <a href="/">Stantastic</a>
+        {#if innerWidth < 490}
+            <div class="nav-small-button" on:click={onNavDropdownClick}>
+                <span class="nav-currentpage-text">{pageName}</span>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+        {/if}
     </div>
-    {#if innerWidth > 489}
-        <div class="nav-pages">
+
+    {#if showDropdown && innerWidth < 490}
+        <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
+        <div class="nav-dropdown-menu" in:dropdownin="{{duration: 250}}" out:dropdownout="{{duration: 100}}">
             <ul>
-                {#each pages as page}
-                    <li><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
+                {#each pages as page, i}
+                    <li class="nav-dropdown-item-{i}" on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
                 {/each}
             </ul>
+            <div class="nav-dropdown-icons">
+                <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
+                <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image"></i></a>
+            </div>
         </div>
     {/if}
-    {#if innerWidth > 627}
-        <div class="nav-spotlight">
-            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
-            <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
-        </div>
-    {/if}
-    {#if innerWidth < 490}
-        <div class="nav-small-button" on:click={onNavDropdownClick}>
-            <span class="nav-currentpage-text">{pageName}</span>
-            <i class="fa-solid fa-angle-down"></i>
-        </div>
-    {/if}
-</div>
-
-{#if showDropdown && innerWidth < 490}
-    <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
-    <div class="nav-dropdown-menu" in:dropdownin="{{duration: 250}}" out:dropdownout="{{duration: 100}}">
-        <ul>
-            {#each pages as page, i}
-                <li class="nav-dropdown-item-{i}" on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
-            {/each}
-        </ul>
-        <div class="nav-dropdown-icons">
-            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
-            <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image"></i></a>
-        </div>
-    </div>
-{/if}
 
 <style>
     .nav{
+        position:sticky;
+        top: 0;
+        left: 0;
         display: flex;
         background-color: white;
         width: 100%;

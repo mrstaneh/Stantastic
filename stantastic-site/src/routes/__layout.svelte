@@ -1,26 +1,32 @@
 <script>
     import Nav from "$lib/Nav.svelte";
+    import PageTransitions from "$lib/PageTransitions.svelte";
     import { onMount } from 'svelte';
+    import { getStores } from '$app/stores';
 
-    let loading = false;
+    const { page } = getStores();
+
+    let loaded = false;
 
     onMount(async () => {
-        loading = true;
+        loaded = true;
     })
 </script>
 
-{#if loading}
-    <Nav/>
-
-    <main>
-        <slot />
-    </main>
+{#if loaded}
+    <Nav page={$page}/>
+    <PageTransitions refresh={$page.path}>
+        <main>
+            <slot />
+        </main>
+    </PageTransitions>
 {/if}
 
 <style>
     main{
-        position: relative;
+        position: absolute;
         margin: 0 auto;
         overflow-x: hidden;
+        width: 100%;
     }
 </style>
