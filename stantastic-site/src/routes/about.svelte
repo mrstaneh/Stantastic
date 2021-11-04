@@ -8,51 +8,42 @@
 
 <svelte:window bind:innerWidth />
 
-<div class="page-container">
-    <section id="about">
-        <div class="about-title">
-            <h1>About me</h1>
-            <div class="title-divider"></div>
+<section id="about">
+    <div class="about-title">
+        <h1>About</h1>
+        <div class="title-divider"></div>
+    </div>
+    <div class="about-content">
+        <div class="about-text">
+            <p>Hallo! Mijn naam is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
+            <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
+            <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
+            <p>Cras a mi in urna interdum bibendum:</p>
+            <ul>
+                <li>Svelte</li>
+                <li>JavaScript</li>
+                <li>C#</li>
+                <li>.NET Framework / Core</li>
+                <li>Java</li>
+                <li>Python</li>
+            </ul>
+            {#if innerWidth < 788}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>{/if}
         </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Hallo! Mijn naam is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
-                <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
-                <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
-                <p>Cras a mi in urna interdum bibendum:</p>
-                <ul>
-                    <li>Svelte</li>
-                    <li>JavaScript</li>
-                    <li>C#</li>
-                    <li>.NET Framework / Core</li>
-                    <li>Java</li>
-                    <li>Python</li>
-                </ul>
-            </div>
-            <img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>        
-        </div>
-    </section>
-</div>
+        {#if innerWidth > 787}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski" style="margin-left: 36px;"/>{/if}
+    </div>
+</section>
 
 <style>
-    .page-container{
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        text-align: center;
-        padding: 0px 150px;
-    }
-
     .profile-picture{
         width: 256px;
         height: 256px;
         border-radius: 128px;
-        margin-left: 36px;
     }
 
     #about{
         margin-top: 5%;
         max-width: 900px;
+        margin-bottom: 5%;
     }
 
     ul{
@@ -60,6 +51,18 @@
         grid-template-columns: repeat(2, minmax(210px, 210px));
         list-style: none;
         padding: 0;
+    }
+
+    @media(max-width: 489px){
+        ul{
+            grid-template-columns: repeat(2, minmax(50%, 50%));
+        }
+    }
+
+    @media(max-width: 363px){
+        ul{
+            grid-template-columns: 100%;
+        }
     }
 
     ul li{
@@ -89,7 +92,7 @@
     }
 
     .about-title h1{
-        width: 25%;
+        width: 180px;
     }
 
     .about-content{

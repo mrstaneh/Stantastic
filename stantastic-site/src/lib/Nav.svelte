@@ -242,7 +242,7 @@
     }
 
     .nav-dropdown-menu{
-        position: absolute;
+        position: fixed;
         display: flex;
         flex-direction: column;
         background-color: white;

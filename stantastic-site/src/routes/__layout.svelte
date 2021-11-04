@@ -24,9 +24,13 @@
 
 <style>
     main{
-        position: absolute;
-        margin: 0 auto;
+        display: flex;
         overflow-x: hidden;
-        width: 100%;
+
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+
+        padding: 0px 10%;
     }
 </style>
