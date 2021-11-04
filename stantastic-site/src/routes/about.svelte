@@ -8,13 +8,13 @@
 
 <svelte:window bind:innerWidth />
 
-<section id="about">
-    <div class="about-title">
+<section class="section-base" id="about">
+    <div class="section-header">
         <h1>About</h1>
         <div class="title-divider"></div>
     </div>
-    <div class="about-content">
-        <div class="about-text">
+    <div class="section-content">
+        <div class="section-text">
             <p>Hello! My name is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
             <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
             <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
@@ -38,12 +38,6 @@
         width: 256px;
         height: 256px;
         border-radius: 128px;
-    }
-
-    #about{
-        margin-top: 5%;
-        max-width: 900px;
-        margin-bottom: 5%;
     }
 
     ul{
@@ -75,8 +69,8 @@
         content: "\f0da";
         font-family: FontAwesome;
         display: inline-block;
-        margin-left: -1.3em; /* same as padding-left set on li */
-        width: 1.3em; /* same as padding-left set on li */
+        margin-left: -1.3em;
+        width: 1.3em;
     }
 
     .title-divider{
@@ -87,25 +81,25 @@
         border-bottom: 1px solid black;
     }
 
-    .about-title{
+    .section-header{
         display: flex;
     }
 
-    .about-title h1{
+    .section-header h1{
         width: 180px;
         margin-block-start: 0em;
         margin-block-end: 0em;
     }
 
-    .about-content{
+    .section-content{
         display: flex;
     }
 
-    .about-text{
+    .section-text{
         float: left;
     }
 
-    .about-text p{
+    .section-text p{
         text-align: left;
         font-size: 18px;
     }

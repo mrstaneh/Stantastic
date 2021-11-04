@@ -1,23 +1,12 @@
-@keyframes spin {
-    from {
-        transform: rotate(0);
-    }
-    
-    to {
-        transform: rotate(360deg);
-    }
-}
+.section-base{
+    background-color: #e7edf0;
+    margin-top: 5%;
+    max-width: 900px;
+    margin-bottom: 5%;
 
-@keyframes rotateX {
-    0% {
-        opacity: 0;
-        transform: rotateX(-90deg);
-    }
-    50% {
-        transform: rotateX(-20deg);
-    }
-    100% {
-        opacity: 1;
-        transform: rotateX(0deg);
-    }
+
+    
+    padding: 5%;
+    border: 1px solid black;
+    border-radius: 8px;
 }
