@@ -1,6 +1,12 @@
+<script>
+    $: innerWidth = 0;
+</script>
+
 <svelte:head>
 	<title>About</title>
 </svelte:head>
+
+<svelte:window bind:innerWidth />
 
 <div class="page-container">
     <section id="about">
@@ -23,12 +29,19 @@
                     <li>Python</li>
                 </ul>
             </div>
-            <img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>
-        </div>
+            <img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>        </div>
     </section>
 </div>
 
 <style>
+    .page-container{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        padding: 0px 150px;
+    }
+
     .profile-picture{
         width: 256px;
         height: 256px;
@@ -89,15 +102,6 @@
     .about-text p{
         text-align: left;
         font-size: 18px;
-    }
-
-    .page-container{
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        text-align: center;
-        padding: 0px 150px;
-        height: calc(100vh - 60px);
     }
 
     p, li, h1{
