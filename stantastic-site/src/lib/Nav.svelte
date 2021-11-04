@@ -1,6 +1,7 @@
 <script>
     import { goto } from '$app/navigation';
     import { getStores } from '$app/stores';
+    import { expoOut } from 'svelte/easing';
 
     const { page } = getStores();
 
@@ -34,6 +35,36 @@
             showDropdown = false;
         }
     }
+
+    function dropdownin(node, {duration}) {
+        console.log('yeet');
+		return {
+            duration,
+			css: t => {
+                const eased = expoOut(t);
+
+				return `
+                    transform: scaleX(${eased});
+                    transform-origin: center top;
+                `
+			}
+		}
+    };
+
+    function dropdownout(node, {duration}) {
+        console.log('yeet');
+		return {
+            duration,
+			css: t => {
+                const eased = expoOut(t);
+
+				return `
+                    transform: scaleX(${eased});
+                    transform-origin: top center;
+                `
+			}
+		}
+    };
 </script>
 
 <svelte:window bind:innerWidth />
@@ -52,7 +83,7 @@
         <div class="nav-pages">
             <ul>
                 {#each pages as page}
-                    <li><a href="{page.route}">{page.name}</a></li>
+                    <li><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
                 {/each}
             </ul>
         </div>
@@ -73,15 +104,15 @@
 
 {#if showDropdown && innerWidth < 490}
     <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
-    <div class="nav-dropdown-menu">
+    <div class="nav-dropdown-menu" in:dropdownin="{{duration: 250}}" out:dropdownout="{{duration: 100}}">
         <ul>
-            {#each pages as page}
-                <li on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
+            {#each pages as page, i}
+                <li class="nav-dropdown-item-{i}" on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
             {/each}
         </ul>
         <div class="nav-dropdown-icons">
-            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
-            <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image"></i></a>
+            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
+            <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image"></i></a>
         </div>
     </div>
 {/if}
@@ -211,6 +242,7 @@
         position: absolute;
         height: calc(100% - 60px);
         width: 100%;
+        z-index: 998;
     }
 
     .nav-dropdown-menu{
@@ -224,7 +256,7 @@
         margin-top: 5px;
         right: 5px;
         width: 40%;
-        
+        z-index: 999;
     }
 
     .nav-dropdown-menu ul{

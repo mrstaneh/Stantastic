@@ -16,3 +16,11 @@
         <slot />
     </main>
 {/if}
+
+<style>
+    main{
+        position: relative;
+        margin: 0 auto;
+        overflow-x: hidden;
+    }
+</style>
