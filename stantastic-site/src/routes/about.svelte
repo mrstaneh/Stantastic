@@ -5,14 +5,14 @@
 </script>
 
 <svelte:head>
-	<title>About</title>
+	<title>{$currentLanguage == 'en' ? 'About' : 'Over mij'}</title>
 </svelte:head>
 
 <svelte:window bind:innerWidth />
 
 <section class="section-base" style="{innerWidth < 788 ? '' : 'background-color: #e7edf0; padding: 5%; padding-top: 4%; padding-bottom: 4%; border: 1px solid #7b7b8f; border-radius: 8px;'}" id="about">
     <div class="section-header">
-        <h1>About</h1>
+        <h1>{$currentLanguage == 'en' ? 'About' : 'Over mij'}</h1>
         <div class="title-divider"></div>
     </div>
     <div class="section-content">

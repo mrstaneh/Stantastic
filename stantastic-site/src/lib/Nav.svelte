@@ -13,7 +13,7 @@
 
     let pages = [
         {name: 'Home', route: '/'},
-        {name: 'About', route: '/about'},
+        {name: $currentLanguage == 'en' ? 'About' : 'Over mij', route: '/about'},
         {name: 'Portfolio', route: '/portfolio'},
         {name: 'Contact', route: '/contact'}
     ]
@@ -60,8 +60,22 @@
     function changeLang(){
         if($currentLanguage == 'en'){
             currentLanguage.set('nl');
+
+            pages = [
+                {name: 'Home', route: '/'},
+                {name: 'Over mij', route: '/about'},
+                {name: 'Portfolio', route: '/portfolio'},
+                {name: 'Contact', route: '/contact'}
+            ];
         }else{
             currentLanguage.set('en');
+
+            pages = [
+                {name: 'Home', route: '/'},
+                {name: 'About', route: '/about'},
+                {name: 'Portfolio', route: '/portfolio'},
+                {name: 'Contact', route: '/contact'}
+            ];
         }
     }
 
@@ -191,6 +205,13 @@
         width: 24px;
         height: 24px;
         margin-right: 11px;
+        -webkit-tap-highlight-color: rgba(74, 74, 85, .2);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 
     .dropdown-lang-icon-image{
@@ -278,8 +299,26 @@
         border-radius: 4px;
         margin-top: 5px;
         right: 5px;
-        width: 32%;
+        width: 30%;
         z-index: 999;
+    }
+
+    @media(max-width: 663px){
+        .nav-dropdown-menu{
+            width: 35%;
+        }
+    }
+
+    @media(max-width: 500px){
+        .nav-dropdown-menu{
+            width: 40%;
+        }
+    }
+
+    @media(max-width: 400px){
+        .nav-dropdown-menu{
+            width: 50%;
+        }
     }
 
     .nav-dropdown-menu ul{
