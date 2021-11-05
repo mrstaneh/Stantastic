@@ -8,7 +8,7 @@
 
 <svelte:window bind:innerWidth />
 
-<section class="section-base" id="about">
+<section class="section-base" style="{innerWidth < 788 ? '' : 'background-color: #e7edf0; padding: 5%; border: 1px solid #7b7b8f; border-radius: 8px;'}" id="about">
     <div class="section-header">
         <h1>About</h1>
         <div class="title-divider"></div>

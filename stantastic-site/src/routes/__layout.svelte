@@ -31,6 +31,6 @@
         align-content: center;
         text-align: center;
 
-        padding: 0px 10%;
+        padding: 0px 5%;
     }
 </style>

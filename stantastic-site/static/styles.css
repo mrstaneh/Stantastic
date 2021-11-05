@@ -1,12 +1,5 @@
 .section-base{
-    background-color: #e7edf0;
     margin-top: 5%;
     max-width: 900px;
     margin-bottom: 5%;
-
-
-    
-    padding: 5%;
-    border: 1px solid black;
-    border-radius: 8px;
 }
