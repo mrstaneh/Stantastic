@@ -7,7 +7,7 @@
     $: innerWidth = 0;
     $: pageName = pages.filter(i => i.route == page.path)[0].name;
     
-    let showDropdown = true;
+    let showDropdown = false;
     let loaded = false;
     export let page = undefined;
 
@@ -99,7 +99,7 @@
             <div class="nav-pages">
                 <ul>
                     {#each pages as page}
-                        <li><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
+                        <li><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''} white-space: nowrap;">{page.name}</a></li>
                     {/each}
                 </ul>
             </div>
