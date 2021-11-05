@@ -2,11 +2,12 @@
     import { goto } from '$app/navigation';
     import { expoOut } from 'svelte/easing';
     import { onMount } from 'svelte';
+    import { currentLanguage } from './stores.js';
 
     $: innerWidth = 0;
     $: pageName = pages.filter(i => i.route == page.path)[0].name;
     
-    let showDropdown = false;
+    let showDropdown = true;
     let loaded = false;
     export let page = undefined;
 
@@ -56,6 +57,14 @@
 		}
     };
 
+    function changeLang(){
+        if($currentLanguage == 'en'){
+            currentLanguage.set('nl');
+        }else{
+            currentLanguage.set('en');
+        }
+    }
+
     onMount(async () => {
         loaded = true;
     });
@@ -72,7 +81,7 @@
             {/if}
             <a href="/">Stantastic</a>
         </div>
-        {#if innerWidth > 489}
+        {#if innerWidth > 662}
             <div class="nav-pages">
                 <ul>
                     {#each pages as page}
@@ -81,13 +90,14 @@
                 </ul>
             </div>
         {/if}
-        {#if innerWidth > 627}
+        {#if innerWidth > 663}
             <div class="nav-spotlight">
+                <img class="lang-icon" src="{$currentLanguage == 'en' ? 'united-kingdom.png' : $currentLanguage == 'nl' ? 'netherlands.png' : 'united-kingdom.png'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
                 <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
                 <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
             </div>
         {/if}
-        {#if innerWidth < 490}
+        {#if innerWidth < 663}
             <div class="nav-small-button" on:click={onNavDropdownClick}>
                 <span class="nav-currentpage-text">{pageName}</span>
                 <i class="fa-solid fa-angle-down"></i>
@@ -95,7 +105,7 @@
         {/if}
     </div>
 
-    {#if showDropdown && innerWidth < 490}
+    {#if showDropdown && innerWidth < 663}
         <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
         <div class="nav-dropdown-menu" in:dropdownin="{{duration: 250}}" out:dropdownout="{{duration: 100}}">
             <ul>
@@ -104,8 +114,9 @@
                 {/each}
             </ul>
             <div class="nav-dropdown-icons">
+                <img class="lang-icon dropdown-lang-icon-image" src="{$currentLanguage == 'en' ? 'united-kingdom.png' : $currentLanguage == 'nl' ? 'netherlands.png' : 'united-kingdom.png'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
                 <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
-                <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image"></i></a>
+                <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image dropdown-icon-github"></i></a>
             </div>
         </div>
     {/if}
@@ -174,6 +185,22 @@
         display: flex;
         align-items: center;
         justify-content: end;
+    }
+
+    .lang-icon{
+        width: 24px;
+        height: 24px;
+        margin-right: 11px;
+    }
+
+    .dropdown-lang-icon-image{
+        width: 32px;
+        height: 32px;
+    }
+
+    .lang-icon:hover{
+        cursor: pointer;
+        filter: saturate(1.2);
     }
 
     .fa-linkedin{
@@ -251,7 +278,7 @@
         border-radius: 4px;
         margin-top: 5px;
         right: 5px;
-        width: 40%;
+        width: 32%;
         z-index: 999;
     }
 
@@ -302,5 +329,9 @@
         font-size: 36px;
         margin-right: 8px;
         margin-left: 8px;
+    }
+
+    .dropdown-icon-github{
+        margin-right: 0px;
     }
 </style>

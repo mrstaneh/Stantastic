@@ -17,7 +17,7 @@
     <Nav page={$page}/>
     <PageTransitions refresh={$page.path}>
         <main>
-            <slot />
+            <slot/>
         </main>
     </PageTransitions>
 {/if}
