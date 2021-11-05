@@ -67,6 +67,8 @@
                 {name: 'Portfolio', route: '/portfolio'},
                 {name: 'Contact', route: '/contact'}
             ];
+
+            localStorage.setItem('lang', 'nl');
         }else{
             currentLanguage.set('en');
 
@@ -76,11 +78,23 @@
                 {name: 'Portfolio', route: '/portfolio'},
                 {name: 'Contact', route: '/contact'}
             ];
+
+            localStorage.setItem('lang', 'en');
         }
     }
 
     onMount(async () => {
         loaded = true;
+
+        if(localStorage.getItem('lang') != null && localStorage.getItem('lang') != undefined){
+            if(localStorage.getItem('lang') == 'en'){
+                currentLanguage.set('en');
+            }else{
+                currentLanguage.set('nl');
+            }
+        }
+
+        console.log(localStorage.getItem('lang'));
     });
 </script>
 
