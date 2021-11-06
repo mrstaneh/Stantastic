@@ -104,7 +104,7 @@
             {#if innerWidth > 546}
                 <img src="android-chrome-512x512.png" alt="logo"/>
             {/if}
-            {#if innerWidth < 490 && innerWidth > 363}
+            {#if innerWidth < 490 && innerWidth > 385}
                 <img src="android-chrome-512x512.png" alt="logo"/>
             {/if}
             <a href="/">Stantastic</a>
