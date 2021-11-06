@@ -107,7 +107,7 @@
             {#if innerWidth < 490 && innerWidth > 385}
                 <img src="android-chrome-512x512.png" alt="logo"/>
             {/if}
-            <a href="/">Stantastic</a>
+            <a href="/">Stan</a><a href="/" style="color: #EF8320;">tastic</a>
         </div>
         {#if innerWidth > 662}
             <div class="nav-pages">
