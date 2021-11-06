@@ -297,7 +297,7 @@
     }
 
     .nav-dropdown-backdrop{
-        position: absolute;
+        position: fixed;
         height: calc(100% - 60px);
         width: 100%;
         z-index: 998;
