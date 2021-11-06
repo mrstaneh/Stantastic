@@ -101,12 +101,12 @@
 <svelte:window bind:innerWidth />
     <div class="nav">
         <div class="nav-title">
-            {#if innerWidth > 546}
+            <!--{#if innerWidth > 546}
                 <img src="android-chrome-512x512.png" alt="logo"/>
             {/if}
             {#if innerWidth < 490 && innerWidth > 385}
                 <img src="android-chrome-512x512.png" alt="logo"/>
-            {/if}
+            {/if}-->
             <a href="/">Stan</a><a href="/" style="color: #EF8320;">tastic</a>
         </div>
         {#if innerWidth > 662}
@@ -128,7 +128,11 @@
         {#if innerWidth < 663}
             <div class="nav-small-button" on:click={onNavDropdownClick}>
                 <span class="nav-currentpage-text">{pageName}</span>
-                <i class="fa-solid fa-angle-down"></i>
+                {#if !showDropdown}
+                    <i class="fa-solid fa-angle-down" in:dropdownout="{{duration: 500}}"></i>
+                {:else}
+                    <i class="fa-solid fa-angle-up" in:dropdownout="{{duration: 500}}"></i>
+                {/if}
             </div>
         {/if}
     </div>
@@ -169,11 +173,11 @@
         margin-right: 22px;
     }
 
-    .nav-title img{
+    /*.nav-title img{
         width: 48px;
         height: 48px;
         margin-right: 8px;
-    }
+    }*/
 
     .nav-title a{
         font-family: 'Titillium Web', sans-serif;
@@ -187,7 +191,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: center;
     }
 
     .nav-pages ul{
@@ -209,7 +213,7 @@
     }
 
     .nav-spotlight{
-        width: 100%;
+        margin-left: 68px;
         display: flex;
         align-items: center;
         justify-content: end;
@@ -265,7 +269,7 @@
         padding-right: 22px;
     }
 
-    .fa-angle-down{
+    .fa-angle-down, .fa-angle-up{
         color: #4A4A55;
         font-size: 26px;
     }
