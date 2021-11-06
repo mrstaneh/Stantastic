@@ -5,7 +5,6 @@
     import { currentLanguage } from './stores.js';
 
     $: innerWidth = 0;
-    $: pageName = pages.filter(i => i.route == page.path)[0].name;
     
     let showDropdown = false;
     let loaded = false;
@@ -16,7 +15,9 @@
         {name: $currentLanguage == 'en' ? 'About' : 'Over mij', route: '/about'},
         {name: 'Portfolio', route: '/portfolio'},
         {name: 'Contact', route: '/contact'}
-    ]
+    ];
+
+    $: pageName = pages.filter(i => i.route == page.path)[0].name;
 
     function onNavDropdownClick(){
         showDropdown = !showDropdown;
@@ -89,12 +90,24 @@
         if(localStorage.getItem('lang') != null && localStorage.getItem('lang') != undefined){
             if(localStorage.getItem('lang') == 'en'){
                 currentLanguage.set('en');
+
+                pages = [
+                    {name: 'Home', route: '/'},
+                    {name: 'About', route: '/about'},
+                    {name: 'Portfolio', route: '/portfolio'},
+                    {name: 'Contact', route: '/contact'}
+                ];
             }else{
                 currentLanguage.set('nl');
+
+                pages = [
+                    {name: 'Home', route: '/'},
+                    {name: 'Over mij', route: '/about'},
+                    {name: 'Portfolio', route: '/portfolio'},
+                    {name: 'Contact', route: '/contact'}
+                ];
             }
         }
-
-        console.log(localStorage.getItem('lang'));
     });
 </script>
 
