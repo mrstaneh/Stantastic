@@ -26,7 +26,7 @@
                 <p>Hallo! Mijn naam is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
                 <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
                 <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
-                <p>Cras a mi in urna interdum bibendum:</p>
+                <p>Hier zijn wat technologiën waar ik mee aan het werken ben:</p>
             {/if}
             <ul>
                 <li>Svelte</li>
