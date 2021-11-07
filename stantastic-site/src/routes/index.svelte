@@ -33,8 +33,8 @@
 		min: 20,
 		max: 40
 	},
-	thickness: 5,
-	strokeColor: '#444',
+	thickness: 3,
+	strokeColor: '#4A4A55',
 	level: .5,
 	curved: true
 	},
@@ -91,17 +91,17 @@
 	};
 
 	Point.prototype.render = function(){
-	ctx.beginPath();
-	ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false);
-	ctx.fillStyle = '#000';
-	ctx.fill();
+		ctx.beginPath();
+		ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, false);
+		ctx.fillStyle = '#000';
+		ctx.fill();
 	};
 
 	var updatePoints = function(){
-	var i = points.length;
-	while(i--){
-	points[i].update();
-	}
+		var i = points.length;
+		while(i--){
+		points[i].update();
+		}
 	};
 
 	var renderPoints = function(){
@@ -183,9 +183,15 @@
 </div>
 <div class="underwater">
 	<div class="first-stop">
-		<h1>Hey daar</h1>
-		<p>Hier komt wat informatie...</p>
-		<p id="stop-1">En dan kan je weer doorklikken</p>
+		{#if $currentLanguage == 'en'}
+			<h1>Hello there</h1>
+			<p>There will be some information here...</p>
+			<p id="stop-1">And then you can click onwards</p>
+		{:else if $currentLanguage == 'nl'}
+			<h1>Hey daar</h1>
+			<p>Hier komt wat informatie...</p>
+			<p id="stop-1">En dan kan je weer doorklikken</p>
+		{/if}
 		<i class="fa-solid fa-circle-arrow-down stop-1"></i>
 	</div>
 </div>
