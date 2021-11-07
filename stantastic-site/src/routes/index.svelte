@@ -11,7 +11,7 @@
 	<h1>Stan</h1><h1 class="h1-p2">tastic</h1>
 	{#if $currentLanguage == 'en'}
 		<p class="subtitle" in:fade={{duration: 250}} >
-				Tailor-made websites
+			Tailor-made websites
 		</p>
 	{:else if $currentLanguage == 'nl'}
 		<p class="subtitle" in:fade={{duration: 250}} >

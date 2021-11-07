@@ -133,7 +133,7 @@
         {/if}
         {#if innerWidth > 663}
             <div class="nav-spotlight">
-                <img class="lang-icon" src="{$currentLanguage == 'en' ? 'united-kingdom.png' : $currentLanguage == 'nl' ? 'netherlands.png' : 'united-kingdom.png'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
+                <img class="lang-icon" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
                 <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
                 <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
             </div>
@@ -159,7 +159,7 @@
                 {/each}
             </ul>
             <div class="nav-dropdown-icons">
-                <img class="lang-icon dropdown-lang-icon-image" src="{$currentLanguage == 'en' ? 'united-kingdom.png' : $currentLanguage == 'nl' ? 'netherlands.png' : 'united-kingdom.png'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
+                <img class="lang-icon dropdown-lang-icon-image" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
                 <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
                 <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image dropdown-icon-github"></i></a>
             </div>
@@ -233,9 +233,13 @@
     }
 
     .lang-icon{
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         margin-right: 11px;
+        border: 2px solid #4A4A55;
+        border-radius: 100%;
+        box-shadow: inset 0 0 0 5px #4A4A55;
+
         -webkit-tap-highlight-color: rgba(74, 74, 85, .2);
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -246,13 +250,14 @@
     }
 
     .dropdown-lang-icon-image{
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
     }
 
     .lang-icon:hover{
         cursor: pointer;
         filter: saturate(1.2);
+        border-color: rgb(105, 105, 121);
     }
 
     .fa-linkedin{
@@ -262,7 +267,7 @@
 
     .fa-github{
         margin-right: 22px;
-        font-size: 26px;
+        font-size: 25px;
     }
 
     .social-icon{
@@ -396,7 +401,7 @@
     }
 
     .dropdown-icon-image{
-        font-size: 36px;
+        font-size: 35px;
         margin-right: 8px;
         margin-left: 8px;
     }
