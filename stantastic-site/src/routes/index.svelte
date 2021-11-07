@@ -200,7 +200,7 @@
 	.underwater{
 		position: absolute;
 		width: 100%;
-		height: 2000px;
+		height: 200%;
 		margin-top: calc(100vh - 60px);
 		background-color: #EF8320;
 	}
