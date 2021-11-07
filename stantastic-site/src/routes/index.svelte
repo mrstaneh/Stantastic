@@ -179,11 +179,14 @@
 			Op maat gemaakte websites
 		</p>
 	{/if}
-	<i class="fa-solid fa-circle-arrow-down" on:click={clickDownButton}></i>
+	<i class="fa-solid fa-circle-arrow-down stop-0" on:click={clickDownButton}></i>
 </div>
 <div class="underwater">
-	<div class="first-stop" id="stop-1">
+	<div class="first-stop">
 		<h1>Hey daar</h1>
+		<p>Hier komt wat informatie...</p>
+		<p id="stop-1">En dan kan je weer doorklikken</p>
+		<i class="fa-solid fa-circle-arrow-down stop-1"></i>
 	</div>
 </div>
 
@@ -197,7 +200,7 @@
 	}
 
 	.first-stop{
-		margin-top: 10%;
+		margin-top: 10em;
 	}
 
 	.home-banner{
@@ -206,12 +209,12 @@
 
 	p, h1{
 		font-family: 'Titillium Web', sans-serif;
+		color: #4A4A55;
 	}
 
     h1{
 		display: inline;
-        color: #4A4A55;
-		font-size: 80px;
+		font-size: 70px;
     }
 
 	.h1-p2{
@@ -224,14 +227,29 @@
 	}
 
 	.fa-circle-arrow-down{
-		margin-top: 4%;
-		font-size: 40px;
 		color: #4A4A55;
-		transition-duration: 100ms;
+		font-size: 40px;
 	}
 
 	.fa-circle-arrow-down:hover{
 		cursor: pointer;
+	}
+
+	.stop-0{
+		margin-top: 4%;
+		font-size: 40px;
+		transition-duration: 100ms;
+	}
+
+	.stop-0:hover{
 		color: #EF8320;
+	}
+
+	.stop-1{
+		margin-top: 1%;
+	}
+
+	.stop-1:hover{
+		color: #555561;
 	}
 </style>
