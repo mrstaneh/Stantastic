@@ -35,7 +35,7 @@
 	},
 	thickness: 5,
 	strokeColor: '#444',
-	level: .50,
+	level: .5,
 	curved: true
 	},
 	rand = function(min, max){
@@ -155,6 +155,11 @@
 
 	loop();
 	}
+
+	function clickDownButton(){
+		var elementToView = document.getElementById('stop-1');
+		elementToView.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	}
 </script>
 
 <svelte:head>
@@ -174,13 +179,29 @@
 			Op maat gemaakte websites
 		</p>
 	{/if}
-	<i class="fa-solid fa-circle-arrow-down"></i>
+	<i class="fa-solid fa-circle-arrow-down" on:click={clickDownButton}></i>
+</div>
+<div class="underwater">
+	<div class="first-stop" id="stop-1">
+		<h1>Hey daar</h1>
+	</div>
 </div>
 
 <style>
+	.underwater{
+		position: absolute;
+		width: 100%;
+		height: 2000px;
+		margin-top: calc(100vh - 60px);
+		background-color: #EF8320;
+	}
+
+	.first-stop{
+		margin-top: 10%;
+	}
+
 	.home-banner{
 		margin-top: 3em;
-		height: 2000px;
 	}
 
 	p, h1{
