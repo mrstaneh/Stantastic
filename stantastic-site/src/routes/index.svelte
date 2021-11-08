@@ -174,6 +174,7 @@
 	<title>Home</title>
 </svelte:head>
 
+
 <canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
 </canvas>
 <div class="home-banner">
