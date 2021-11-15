@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	onMount(async () => {
+	/*onMount(async () => {
 		drawCanvas();
     	window.addEventListener("resize", displayWindowSize);
     });
@@ -26,7 +26,6 @@
 		cw = c.width = window.innerWidth,
 		ch = c.height = window.innerHeight,
 		points = [],
-		tick = 0,
 		opt = {
 		count: 5,
 		range: {
@@ -142,7 +141,6 @@
 
 		var loop = function(){
 			window.requestAnimFrame(loop, c);
-			tick++;
 			clear();
 			updatePoints();
 			renderShape();
@@ -159,10 +157,10 @@
 			}));
 		}
 
-		window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/60)}}();
+		window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/30)}}();
 
-		//loop();
-	}
+		loop();
+	}*/
 
 	function clickDownButton(){
 		var elementToView = document.getElementById('stop-1');
@@ -175,8 +173,8 @@
 </svelte:head>
 
 
-<canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
-</canvas>
+<!--<canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
+</canvas>-->
 <div class="home-banner">
 	<h1>Stan</h1><h1 class="h1-p2">tastic</h1>
 	{#if $currentLanguage == 'en'}
