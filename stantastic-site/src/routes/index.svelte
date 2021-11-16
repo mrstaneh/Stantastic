@@ -24,6 +24,7 @@
 	function drawCanvas()
 	{
 		let maxRange = map(window.innerWidth, 0, 1920, 5, 25);
+		let levelRange = map(window.innerWidth, 0, 1920, .4, .5);
 
 		var c = document.getElementById('canvas'),
 		ctx = c.getContext('2d'),
@@ -42,7 +43,7 @@
 		},
 		thickness: 3,
 		strokeColor: '#4A4A55',
-		level: .5,
+		level: levelRange,
 		curved: true
 		},
 		rand = function(min, max){
