@@ -18,27 +18,19 @@
     <div class="section-content">
         <div class="section-text">
             {#if $currentLanguage == 'en'}
-                <p>Hello! My name is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
-                <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
-                <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
+                <p>My inbox is always open, whether you have any questions or just want to say hi. Fill in the form below to send me an e-mail.</p>
             {:else if $currentLanguage == 'nl'}
-                <p>Hallo! Mijn naam is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
-                <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
-                <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
+                <p>Mijn inbox is altijd open als je een vraag hebt of gewoon even hallo wilt zeggen. Vul het formulier hieronder in om me een e-mail te sturen.</p>
             {/if}
-            {#if innerWidth < 788}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>{/if}
+
+            <p>Stan Jaworski</p>
+            <p>staneh@live.nl</p>
+            <p>06-37611847</p>
         </div>
-        {#if innerWidth > 787}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski" style="margin-left: 36px;"/>{/if}
     </div>
 </section>
 
 <style>
-    .profile-picture{
-        width: 256px;
-        height: 256px;
-        border-radius: 128px;
-    }
-
     .title-divider{
         padding-top: 20px;
         margin-right: 36px;
