@@ -7,7 +7,7 @@
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	onMount(async () => {
+	/*onMount(async () => {
 		drawCanvas();
     	window.addEventListener("resize", displayWindowSize);
     });
@@ -165,7 +165,7 @@
 		window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/30)}}();
 
 		loop();
-	}
+	}*/
 
 	function clickDownButton(){
 		var elementToView = document.getElementById('stop-1');
@@ -178,8 +178,8 @@
 </svelte:head>
 
 
-<canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
-</canvas>
+<!--<canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
+</canvas>-->
 <div class="home-banner">
 	<h1>Stan</h1><h1 class="h1-p2">tastic</h1>
 	{#if $currentLanguage == 'en'}
