@@ -179,6 +179,7 @@
 
     .nav-title a{
         font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
         font-size: 36px;
         color: #4A4A55;
         text-decoration: none;
@@ -202,6 +203,7 @@
         text-decoration: none;
         margin-right: 1em;
         font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
         color: #4A4A55;
         font-size: 18px;
     }
@@ -308,6 +310,7 @@
 
     .nav-currentpage-text{
         font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
         color: #4A4A55;
         font-size: 18px;
         margin-right: 8px;
@@ -378,6 +381,7 @@
     .nav-dropdown-menu ul li a {
         text-decoration: none;
         font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
         color: #4A4A55;
         font-size: 24px;
         -webkit-touch-callout: none;

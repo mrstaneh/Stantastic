@@ -54,27 +54,85 @@
                 <p>Mijn inbox is altijd open als je een vraag hebt of gewoon even hallo wilt zeggen. Vul het formulier hieronder in om me een e-mail te sturen.</p>
             {/if}
 
-        <!-- modify this form HTML and place wherever you want your form -->
-        <form on:submit|preventDefault="{submitContactForm}">
-            <label>
-                Your email:
-                <input type="email" bind:value={userEmail}>
-            </label>
-            <label>
-                Your message:
-                <textarea bind:value={userMessage}></textarea>
-            </label>
-            <button type="submit" disabled={sendingEmail}>Send</button>
-        </form>
-
-            <p>Stan Jaworski</p>
-            <p>staneh@live.nl</p>
-            <p>06-37611847</p>
+            <!-- modify this form HTML and place wherever you want your form -->
+            <form on:submit|preventDefault="{submitContactForm}">
+                <div class="form-input">
+                    <label for="userEmailInput">Your email</label>
+                    <input type="email" id="userEmailInput" bind:value={userEmail}>
+                </div>
+                <div class="form-input">
+                    <label for="userMessageInput">Your message</label>
+                    <textarea id="userMessageInput" bind:value={userMessage} rows="5"></textarea>
+                </div>
+                <button id="userEmailSubmit" type="submit" disabled={sendingEmail}>Submit {#if sendingEmail}<i class="loader fa-solid fa-cog fa-spin"></i>{/if}</button>
+            </form>
         </div>
     </div>
 </section>
 
 <style>
+    form{
+        width: 100%;
+    }
+
+    .loader{
+        margin-left: 4px;
+        font-size: 16px;
+    }
+
+    label{
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    input, textarea{
+        outline: 1px solid transparent;
+    }
+
+    input:focus, textarea:focus{
+        outline: 1px solid #7b7b8f;
+        transition-duration: 200ms;
+    }
+
+    input[type=email], textarea{
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 16px;
+        color: black;
+    }
+
+    button[type=submit]{
+        display: block;
+        padding: 12px 20px;
+        width: 140px;
+        background-color: #FFFFFF;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: 'Titillium Web', sans-serif;
+        color: black;
+        cursor: pointer;
+    }
+
+    button[type=submit]:disabled{
+        background: #f2f2f2;
+        cursor:default;
+    }
+
+    button[type=submit]:not(:disabled):hover{
+        background-color: #f2f2f2;
+    }
+
+    .form-input{
+        text-align: start;
+    }
+
     .title-divider{
         padding-top: 20px;
         margin-right: 36px;
@@ -106,7 +164,7 @@
         font-size: 18px;
     }
 
-    p, h1{
+    label, p, h1{
         font-family: 'Titillium Web', sans-serif;
         color: black;
     }
