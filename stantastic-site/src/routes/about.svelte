@@ -1,16 +1,12 @@
 <script>
     import { currentLanguage } from '$lib/stores.js';
-
-    $: innerWidth = 0;
 </script>
 
 <svelte:head>
 	<title>{$currentLanguage == 'en' ? 'About' : 'Over mij'}</title>
 </svelte:head>
 
-<svelte:window bind:innerWidth />
-
-<section class="section-base" style="{innerWidth < 788 ? '' : 'background-color: #e7edf0; padding: 5%; padding-top: 4%; padding-bottom: 4%; border: 1px solid #7b7b8f; border-radius: 8px;'}" id="about">
+<section class="section-base" id="about">
     <div class="section-header">
         <h1>{$currentLanguage == 'en' ? 'About' : 'Over mij'}</h1>
         <div class="title-divider"></div>
@@ -36,14 +32,14 @@
                 <li>Java</li>
                 <li>Python</li>
             </ul>
-            {#if innerWidth < 788}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>{/if}
+            <img class="profile-picture-content" src="stan.jpg" alt="Stan Jaworski"/>
         </div>
-        {#if innerWidth > 787}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski" style="margin-left: 36px;"/>{/if}
+        <img class="profile-picture" src="stan.jpg" alt="Stan Jaworski" style="margin-left: 36px;"/>
     </div>
 </section>
 
 <style>
-    .profile-picture{
+    .profile-picture, .profile-picture-content{
         width: 256px;
         height: 256px;
         border-radius: 128px;
@@ -54,6 +50,18 @@
         grid-template-columns: repeat(2, minmax(210px, 210px));
         list-style: none;
         padding: 0;
+    }
+
+    @media(min-width: 788px){
+        .profile-picture-content{
+            display: none;
+        }
+    }
+
+    @media(max-width: 787px){
+        .profile-picture{
+            display: none;
+        }
     }
 
     @media(max-width: 489px){

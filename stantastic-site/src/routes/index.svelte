@@ -1,7 +1,3 @@
-<script context="module">
-	export const ssr = false;
-</script>
-
 <script>
 	import { currentLanguage } from '$lib/stores.js';
 	import { fade } from 'svelte/transition';

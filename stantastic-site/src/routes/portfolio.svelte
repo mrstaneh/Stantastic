@@ -1,16 +1,12 @@
 <script>
     import { currentLanguage } from '$lib/stores.js';
-
-    $: innerWidth = 0;
 </script>
 
 <svelte:head>
 	<title>Portfolio</title>
 </svelte:head>
 
-<svelte:window bind:innerWidth />
-
-<section class="section-base" style="{innerWidth < 788 ? '' : 'background-color: #e7edf0; padding: 5%; padding-top: 4%; padding-bottom: 4%; border: 1px solid #7b7b8f; border-radius: 8px;'}" id="about">
+<section class="section-base" id="about">
     <div class="section-header">
         <h1>Portfolio</h1>
         <div class="title-divider"></div>
@@ -26,19 +22,11 @@
                 <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
                 <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
             {/if}
-            {#if innerWidth < 788}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski"/>{/if}
         </div>
-        {#if innerWidth > 787}<img class="profile-picture" src="stan.jpg" alt="Stan Jaworski" style="margin-left: 36px;"/>{/if}
     </div>
 </section>
 
 <style>
-    .profile-picture{
-        width: 256px;
-        height: 256px;
-        border-radius: 128px;
-    }
-
     .title-divider{
         padding-top: 20px;
         margin-right: 36px;

@@ -3,8 +3,6 @@
     import { expoOut } from 'svelte/easing';
     import { onMount } from 'svelte';
     import { currentLanguage } from './stores.js';
-
-    $: innerWidth = 0;
     
     let showDropdown = false;
     let loaded = false;
@@ -111,60 +109,47 @@
     });
 </script>
 
-<svelte:window bind:innerWidth />
-    <div class="nav">
-        <div class="nav-title">
-            <!--{#if innerWidth > 546}
-                <img src="android-chrome-512x512.png" alt="logo"/>
-            {/if}
-            {#if innerWidth < 490 && innerWidth > 385}
-                <img src="android-chrome-512x512.png" alt="logo"/>
-            {/if}-->
-            <a href="/">Stan</a><a href="/" style="color: #EF8320;">tastic</a>
-        </div>
-        {#if innerWidth > 662}
-            <div class="nav-pages">
-                <ul>
-                    {#each pages as page}
-                        <li><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''} white-space: nowrap;">{page.name}</a></li>
-                    {/each}
-                </ul>
-            </div>
-        {/if}
-        {#if innerWidth > 663}
-            <div class="nav-spotlight">
-                <img class="lang-icon" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
-                <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
-                <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
-            </div>
-        {/if}
-        {#if innerWidth < 663}
-            <div class="nav-small-button" on:click={onNavDropdownClick}>
-                <span class="nav-currentpage-text">{pageName}</span>
-                {#if !showDropdown}
-                    <i class="fa-solid fa-angle-down" in:dropdownout="{{duration: 500}}"></i>
-                {:else}
-                    <i class="fa-solid fa-angle-up" in:dropdownout="{{duration: 500}}"></i>
-                {/if}
-            </div>
+<div class="nav">
+    <div class="nav-title">
+        <a href="/">Stan</a><a href="/" style="color: #EF8320;">tastic</a>
+    </div>
+    <div class="nav-pages">
+        <ul>
+            {#each pages as page}
+                <li><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''} white-space: nowrap;">{page.name}</a></li>
+            {/each}
+        </ul>
+    </div>
+    <div class="nav-spotlight">
+        <img class="lang-icon" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
+        <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
+        <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
+    </div>
+    <div class="nav-small-button" on:click={onNavDropdownClick}>
+        <span class="nav-currentpage-text">{pageName}</span>
+        {#if !showDropdown}
+            <i class="fa-solid fa-angle-down" in:dropdownout="{{duration: 500}}"></i>
+        {:else}
+            <i class="fa-solid fa-angle-up" in:dropdownout="{{duration: 500}}"></i>
         {/if}
     </div>
+</div>
 
-    {#if showDropdown && innerWidth < 663}
-        <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
-        <div class="nav-dropdown-menu" in:dropdownin="{{duration: 250}}" out:dropdownout="{{duration: 100}}">
-            <ul>
-                {#each pages as page, i}
-                    <li class="nav-dropdown-item-{i}" on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
-                {/each}
-            </ul>
-            <div class="nav-dropdown-icons">
-                <img class="lang-icon dropdown-lang-icon-image" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
-                <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
-                <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image dropdown-icon-github"></i></a>
-            </div>
+{#if showDropdown}
+    <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
+    <div class="nav-dropdown-menu" in:dropdownin="{{duration: 250}}" out:dropdownout="{{duration: 100}}">
+        <ul>
+            {#each pages as page, i}
+                <li class="nav-dropdown-item-{i}" on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
+            {/each}
+        </ul>
+        <div class="nav-dropdown-icons">
+            <img class="lang-icon dropdown-lang-icon-image" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
+            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
+            <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image dropdown-icon-github"></i></a>
         </div>
-    {/if}
+    </div>
+{/if}
 
 <style>
     .nav{
@@ -232,6 +217,16 @@
         justify-content: end;
     }
 
+    @media(max-width: 662px){
+        .nav-pages{
+            display: none;
+        }
+
+        .nav-spotlight{
+            display: none;
+        }
+    }
+
     .lang-icon{
         width: 20px;
         height: 20px;
@@ -295,6 +290,12 @@
     .nav-small-button{
         cursor: pointer;
         -webkit-tap-highlight-color: rgba(74, 74, 85, .2);
+    }
+
+    @media(min-width: 663px){
+        .nav-small-button{
+            display: none;
+        }
     }
 
     .nav-small-button:hover .nav-currentpage-text{
@@ -409,4 +410,15 @@
     .dropdown-icon-github{
         margin-right: 0px;
     }
+
+    @media(min-width: 662px){
+        .nav-dropdown-backdrop{
+            display: none;
+        }
+
+        .nav-dropdown-menu{
+            display: none;
+        }
+    }
+
 </style>

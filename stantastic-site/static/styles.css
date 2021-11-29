@@ -1,3 +1,14 @@
+@media(min-width: 788px){
+    .section-base{
+        background-color: #e7edf0; 
+        padding: 5%; 
+        padding-top: 4%; 
+        padding-bottom: 4%; 
+        border: 1px solid #7b7b8f; 
+        border-radius: 8px;
+    }
+}
+
 .section-base{
     margin-top: 5%;
     max-width: 900px;
