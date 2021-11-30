@@ -170,7 +170,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Home - Stantastic</title>
 </svelte:head>
 
 

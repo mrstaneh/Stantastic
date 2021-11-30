@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Portfolio</title>
+	<title>Portfolio - Stantastic</title>
 </svelte:head>
 
 <section class="section-base" id="about">

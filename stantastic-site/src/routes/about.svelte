@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>{$currentLanguage == 'en' ? 'About' : 'Over mij'}</title>
+	<title>{$currentLanguage == 'en' ? 'About' : 'Over mij'} - Stantastic</title>
 </svelte:head>
 
 <section class="section-base" id="about">
