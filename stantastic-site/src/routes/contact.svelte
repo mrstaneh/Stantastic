@@ -30,6 +30,9 @@
                     if(res.status === 0){
                         sentEmailSuccess = true;
 
+                        userEmail = '';
+                        userMessage = '';
+
                         window.setTimeout(resetSendButton, 3000);
                     }else{
                         sentEmailFailed = true;
