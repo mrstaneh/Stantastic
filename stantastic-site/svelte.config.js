@@ -1,5 +1,6 @@
 import node from '@sveltejs/adapter-node';
 //import adapter from '@sveltejs/adapter-static';
+import adapter from 'svelte-adapter-deno';
 
 const config = {
 	kit: {
@@ -10,7 +11,13 @@ const config = {
 			fallback: null
 		})*/
 
-		adapter: node()
+		adapter: adapter({
+			// default options are shown
+			out: 'build',
+			deps: './node_modules/svelte-adapter-deno/deps.ts' // (relative to adapter-deno package)
+		})
+
+		//adapter: node()
 	}
 };
 
