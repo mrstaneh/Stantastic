@@ -3,6 +3,8 @@
 	import { fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
+	let currentY;
+
 	onMount(async () => {
 		drawCanvas();
     	window.addEventListener("resize", displayWindowSize);
@@ -167,12 +169,17 @@
 		var elementToView = document.getElementById('stop-1');
 		elementToView.scrollIntoView({ behavior: 'smooth', block: 'center' });
 	}
+
+	function goTop(){
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 </script>
 
 <svelte:head>
 	<title>Home - Stantastic</title>
 </svelte:head>
 
+<svelte:window bind:scrollY={currentY}/>
 
 <canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
 </canvas>
@@ -203,8 +210,33 @@
 		<i class="fa-solid fa-circle-arrow-down stop-1"></i>
 	</div>
 </div>
+{#if currentY > window.innerHeight / 2}
+<button id="top-button" on:click={goTop}><i class="fa-solid fa-angles-up"></i></button>
+{/if}
 
 <style>
+	#top-button{
+		cursor: pointer;
+		position: fixed;
+		bottom: 20px;
+		right: 0px;
+		z-index: 1;
+		border: none;
+		outline: none;
+		background-color: #4A4A55;
+		color: #4A4A55;
+		padding: 15px;
+		padding-right: 15px;
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.fa-angles-up{
+		font-size: 24px;
+		color: #EF8320;
+	}
+
 	.underwater{
 		position: absolute;
 		width: 100%;
