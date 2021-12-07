@@ -1,6 +1,6 @@
 <script>
 	import { currentLanguage } from '$lib/stores.js';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
 	let currentY;
@@ -211,7 +211,7 @@
 	</div>
 </div>
 {#if currentY > window.innerHeight / 2}
-<button id="top-button" on:click={goTop}><i class="fa-solid fa-angles-up"></i></button>
+<button in:fly='{{ x: 50, duration: 400 }}' out:fly='{{ x: 50, duration: 400 }}' id="top-button" on:click={goTop}><i class="fa-solid fa-angles-up"></i></button>
 {/if}
 
 <style>
