@@ -34,7 +34,7 @@
                             <h1><a href="https://boulderarchive.com/" target="_blank">Boulder Archive</a></h1>
                         </div>
                         <div class="project-info">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar.</p>
+                            <p>This element is not responsive yet. Integer tincidunt at metus sit amet pulvinar.</p>
                         </div>
                         <div class="project-tools">
                             <ul class="tools-list">
@@ -63,6 +63,8 @@
         display: flex;
         width: 75%;
         height: 100%;
+        min-height: 240px;
+        min-width: 426px;
         border-radius: 8px;
         mix-blend-mode: multiply;
         background-color: grey;
@@ -91,8 +93,10 @@
         opacity: 0.90;
         vertical-align: top;
         width: 100%;
-        filter: contrast(1) brightness(50%);
+        filter: contrast(1) brightness(50%) blur(0px);
         border-radius: 8px;
+        min-height: 240px;
+        min-width: 100%;
     }
 
     .title-divider{
@@ -152,6 +156,13 @@
     .project-info p{
         margin: 0;
         text-align: left;
+    }
+
+    .project-tools{
+        position: relative;
+        left: -70%;
+        width: 170%;
+        padding: 0px 6px 0px 6px;
     }
 
     .tools-list{
