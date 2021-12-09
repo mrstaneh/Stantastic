@@ -234,40 +234,4 @@
     .form-input{
         text-align: start;
     }
-
-    .title-divider{
-        padding-top: 20px;
-        margin-right: 36px;
-        height: 100%;
-        width: 100%;
-        border-bottom: 1px solid black;
-    }
-
-    .section-header{
-        display: flex;
-    }
-
-    .section-header h1{
-        width: 180px;
-        margin-block-start: 0em;
-        margin-block-end: 0em;
-    }
-
-    .section-content{
-        display: flex;
-    }
-
-    .section-text{
-        float: left;
-    }
-
-    .section-text p{
-        text-align: left;
-        font-size: 18px;
-    }
-
-    label, p, h1{
-        font-family: 'Titillium Web', sans-serif;
-        color: black;
-    }
 </style>
