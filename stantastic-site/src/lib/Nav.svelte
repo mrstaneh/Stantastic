@@ -1,7 +1,7 @@
 <script>
     import { goto } from '$app/navigation';
     import { expoOut } from 'svelte/easing';
-    import { onMount } from 'svelte';
+    import { onMount, beforeUpdate } from 'svelte';
     import { currentLanguage } from './stores.js';
     
     let showDropdown = false;
@@ -15,7 +15,7 @@
         {name: 'Contact', route: '/contact'}
     ];
 
-    $: pageName = pages.filter(i => i.route == page.path)[0].name;
+    let pageName = '';
 
     function onNavDropdownClick(){
         showDropdown = !showDropdown;
@@ -81,6 +81,27 @@
             localStorage.setItem('lang', 'en');
         }
     }
+
+    beforeUpdate(() => {
+        switch(page.path){
+            case '/':
+                pageName = 'Home';
+                break;
+            case '/about':
+                if($currentLanguage == 'en'){
+                    pageName = 'About';
+                }else{
+                    pageName = 'Over mij';
+                }
+                break;
+            case '/portfolio':
+                pageName = 'Portfolio';
+                break;
+            case '/contact':
+                pageName = 'Contact';
+                break;
+        }
+    });
 
     onMount(async () => {
         loaded = true;
