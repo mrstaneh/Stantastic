@@ -38,8 +38,8 @@
 			y: maxRange
 		},
 		duration: {
-			min: 20,
-			max: 40
+			min: 60,
+			max: 120
 		},
 		thickness: 3,
 		strokeColor: '#4A4A55',
