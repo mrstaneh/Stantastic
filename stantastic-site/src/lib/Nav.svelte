@@ -11,7 +11,6 @@
     let pages = [
         {name: 'Home', route: '/'},
         {name: $currentLanguage == 'en' ? 'About' : 'Over mij', route: '/about'},
-        {name: 'Portfolio', route: '/portfolio'},
         {name: 'Contact', route: '/contact'}
     ];
 
@@ -63,7 +62,6 @@
             pages = [
                 {name: 'Home', route: '/'},
                 {name: 'Over mij', route: '/about'},
-                {name: 'Portfolio', route: '/portfolio'},
                 {name: 'Contact', route: '/contact'}
             ];
 
@@ -74,7 +72,6 @@
             pages = [
                 {name: 'Home', route: '/'},
                 {name: 'About', route: '/about'},
-                {name: 'Portfolio', route: '/portfolio'},
                 {name: 'Contact', route: '/contact'}
             ];
 
@@ -113,7 +110,6 @@
                 pages = [
                     {name: 'Home', route: '/'},
                     {name: 'About', route: '/about'},
-                    {name: 'Portfolio', route: '/portfolio'},
                     {name: 'Contact', route: '/contact'}
                 ];
             }else{
@@ -122,7 +118,6 @@
                 pages = [
                     {name: 'Home', route: '/'},
                     {name: 'Over mij', route: '/about'},
-                    {name: 'Portfolio', route: '/portfolio'},
                     {name: 'Contact', route: '/contact'}
                 ];
             }

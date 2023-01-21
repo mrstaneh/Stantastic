@@ -19,22 +19,22 @@
                 <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
                 <p>Here are a few technologies I have been working with:</p>
             {:else if $currentLanguage == 'nl'}
-                <p>Hallo! Mijn naam is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
+                <p>Hallo! Ik ben Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
                 <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
                 <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
-                <p>Hier zijn wat technologiën waar ik mee aan het werken ben:</p>
+                <p>Hier zijn wat technologiën waarmee ik aan het werken ben:</p>
             {/if}
             <ul>
                 <li>Svelte</li>
-                <li>JavaScript</li>
-                <li>C#</li>
-                <li>.NET Framework / Core</li>
+                <li>Objective C / iOS</li>
+                <li>C# / .NET Framework</li>
                 <li>Java</li>
                 <li>Python</li>
+                <li>Swift</li>
             </ul>
-            <img class="profile-picture-content" src="stan.jpg" alt="Stan Jaworski"/>
+            <img class="profile-picture-content" src="stan.jpeg" alt="Stan Jaworski"/>
         </div>
-        <img class="profile-picture" src="stan.jpg" alt="Stan Jaworski" style="margin-left: 36px;"/>
+        <img class="profile-picture" src="stan.jpeg" alt="Stan Jaworski" style="margin-left: 36px;"/>
     </div>
 </section>
 

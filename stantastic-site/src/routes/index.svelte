@@ -189,11 +189,11 @@
 	<h1>Stan</h1><h1 class="h1-p2">tastic</h1>
 	{#if $currentLanguage == 'en'}
 		<p class="subtitle" in:fade={{duration: 250}} >
-			Tailor-made websites
+			Tailor-made software
 		</p>
 	{:else if $currentLanguage == 'nl'}
 		<p class="subtitle" in:fade={{duration: 250}} >
-			Op maat gemaakte websites
+			Op maat gemaakte software
 		</p>
 	{/if}
 	<i class="fa-solid fa-circle-arrow-down stop-0" on:click={clickDownButton}></i>
