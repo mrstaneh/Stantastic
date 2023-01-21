@@ -29,7 +29,7 @@
 		var c = document.getElementById('canvas'),
 		ctx = c.getContext('2d'),
 		cw = c.width = window.innerWidth,
-		ch = c.height = window.innerHeight,
+		ch = c.height = window.innerHeight - 60, // subtract nav height
 		points = [],
 		opt = {
 		count: 5,
@@ -196,9 +196,9 @@
 			Op maat gemaakte software
 		</p>
 	{/if}
-	<i class="fa-solid fa-circle-arrow-down stop-0" on:click={clickDownButton}></i>
+	<!--<i class="fa-solid fa-circle-arrow-down stop-0" on:click={clickDownButton}></i>-->
 </div>
-<div class="underwater">
+<!--<div class="underwater">
 	<div class="first-stop">
 		{#if $currentLanguage == 'en'}
 			<h1>Hello there</h1>
@@ -215,7 +215,7 @@
 {#if currentY > window.innerHeight / 2}
 <button in:fly='{{ x: 50, duration: 400 }}' out:fly='{{ x: 50, duration: 400 }}' id="top-button" on:click={goTop}><i class="fa-solid fa-angles-up"></i></button>
 {/if}
-
+-->
 <style>
 	#top-button{
 		cursor: pointer;

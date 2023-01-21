@@ -80,7 +80,7 @@
     }
 
     beforeUpdate(() => {
-        switch(page.path){
+        switch(page.url.pathname){
             case '/':
                 pageName = 'Home';
                 break;

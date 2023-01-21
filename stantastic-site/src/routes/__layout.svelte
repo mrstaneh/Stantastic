@@ -15,7 +15,7 @@
 
 {#if loaded}
     <Nav page={$page}/>
-    <PageTransitions refresh={$page.path}>
+    <PageTransitions refresh={$page.url.pathname}>
         <main>
             <slot/>
         </main>
