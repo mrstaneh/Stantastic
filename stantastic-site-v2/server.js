@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import { handler } from './build/handler.js';
 import express from 'express';
 import helmet from "helmet";
