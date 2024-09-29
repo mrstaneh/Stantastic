@@ -8,12 +8,12 @@
   },
   "devDependencies": {
     "@sveltejs/kit": "next",
-    "svelte": "^3.42.6",
-    "svelte-adapter-deno": "^0.3.2"
+    "svelte": "^4.2.19",
+    "svelte-adapter-deno": "^0.9.1"
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.55",
-    "@sveltejs/adapter-static": "^1.0.0-next.21"
+    "@sveltejs/adapter-node": "^5.2.5",
+    "@sveltejs/adapter-static": "^3.0.5"
   }
 }
