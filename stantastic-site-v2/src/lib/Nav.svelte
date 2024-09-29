@@ -127,7 +127,7 @@
 
 <div class="nav">
     <div class="nav-title">
-        <a href="/">Stan</a><a href="/" style="color: #EF8320;">&nbspJaworski</a>
+        <a href="/">Stan</a><a href="/" style="color: #EF8320;">Jaworski</a>
     </div>
     <div class="nav-pages">
         <ul>

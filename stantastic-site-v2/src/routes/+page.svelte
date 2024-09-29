@@ -186,7 +186,7 @@
 <canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
 </canvas>
 <div class="home-banner">
-	<h1>Stan</h1><h1 class="h1-p2">&nbspJaworski</h1>
+	<h1>Stan</h1><h1 class="h1-p2">Jaworski</h1>
 	{#if $currentLanguage == 'en'}
 		<p class="subtitle" in:fade={{duration: 250}} >
 			Tailor-made software
@@ -253,6 +253,7 @@
 
 	.home-banner{
 		margin-top: 3em;
+		container-name: titletext
 	}
 
 	p, h1{
@@ -260,13 +261,19 @@
 		color: #4A4A55;
 	}
 
-    h1{
+	h1 {
 		display: inline;
-		font-size: 70px;
-    }
+		font-size:  70px;
+	}
 
 	.h1-p2{
 		color: #EF8320;
+	}
+
+	@container titletext (max-width: 440px) {
+		.h1 {
+			font-size: 50px;
+		}
 	}
 
 	.subtitle{
