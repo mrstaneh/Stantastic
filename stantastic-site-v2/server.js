@@ -13,7 +13,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "'unsafe-inline'", "'https://*.fontawesome.com/'"],
+        "script-src": ["'self'", "'unsafe-inline'", "https://*.fontawesome.com/"],
       }
     },
     referrerPolicy: {
