@@ -14,6 +14,9 @@
 </script>
 
 {#if loaded}
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' https://stanjaworski.nl/ https://*.googleapis.com/ https://*.gstatic.com/ https://*.fontawesome.com/; connect-src 'self' https://*.fontawesome.com/;" />
+    </head>
     <Nav page={$page}/>
     <PageTransitions refresh={$page.url.pathname}>
         <main>
