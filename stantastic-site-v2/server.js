@@ -14,6 +14,7 @@ app.use(
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
         "script-src": ["'self'", "'unsafe-inline'", "https://*.fontawesome.com/"],
+        "connect-src": ["https://*.fontawesome.com/"]
       }
     },
     referrerPolicy: {
