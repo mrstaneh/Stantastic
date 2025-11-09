@@ -7,8 +7,8 @@
     "preview": "svelte-kit preview --port 3001"
   },
   "devDependencies": {
-    "@sveltejs/kit": "next",
-    "svelte": "^4.2.19",
+    "@sveltejs/kit": "^2.48.4",
+    "svelte": "^4.2.20",
     "svelte-adapter-deno": "^0.9.1"
   },
   "type": "module",
