@@ -2,11 +2,11 @@
     import Nav from "$lib/Nav.svelte";
     import PageTransitions from "$lib/PageTransitions.svelte";
     import { onMount } from 'svelte';
-    import { getStores } from '$app/stores';
+    import { page } from '$app/stores';
 
-    const { page } = getStores();
+    let { children } = $props();
 
-    let loaded = false;
+    let loaded = $state(false);
 
     onMount(async () => {
         loaded = true;
@@ -17,7 +17,7 @@
     <Nav page={$page}/>
     <PageTransitions refresh={$page.url.pathname}>
         <main>
-            <slot/>
+            {@render children()}
         </main>
     </PageTransitions>
 {/if}

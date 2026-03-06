@@ -3,7 +3,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 
-	let currentY;
+	let currentY = $state();
 
 	onMount(async () => {
 		drawCanvas();
@@ -213,7 +213,7 @@
 	</div>
 </div>
 {#if currentY > window.innerHeight / 2}
-<button in:fly='{{ x: 50, duration: 400 }}' out:fly='{{ x: 50, duration: 400 }}' id="top-button" on:click={goTop}><i class="fa-solid fa-angles-up"></i></button>
+<button in:fly='{{ x: 50, duration: 400 }}' out:fly='{{ x: 50, duration: 400 }}' id="top-button" onclick={goTop}><i class="fa-solid fa-angles-up"></i></button>
 {/if}
 -->
 <style>

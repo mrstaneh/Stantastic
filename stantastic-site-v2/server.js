@@ -8,20 +8,33 @@ import { createTerminus } from '@godaddy/terminus'
 
 const app = express();
 
+// Use helmet with other security headers, but disable CSP
 app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "'unsafe-inline'", "https://*.fontawesome.com/"],
-        "connect-src": ["https://*.fontawesome.com/"]
-      }
-    },
-    referrerPolicy: {
-      policy: ["same-origin"],
-    },
+    contentSecurityPolicy: false
   })
 )
+
+// Custom CSP middleware that allows SvelteKit inline scripts
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://kit.fontawesome.com/ https://ka-f.fontawesome.com/",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com/",
+      "connect-src 'self' https://ka-f.fontawesome.com/ https://formspree.io/",
+      "img-src 'self' data:",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self' https://formspree.io/",
+      "frame-ancestors 'none'",
+      "upgrade-insecure-requests"
+    ].join('; ')
+  );
+  next();
+});
 
 app.use(handler);
 

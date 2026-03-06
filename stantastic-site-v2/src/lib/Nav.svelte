@@ -1,20 +1,21 @@
 <script>
     import { goto } from '$app/navigation';
     import { expoOut } from 'svelte/easing';
-    import { onMount, beforeUpdate } from 'svelte';
+    import { onMount } from 'svelte';
     import { currentLanguage } from './stores.js';
-    
-    let showDropdown = false;
-    let loaded = false;
-    export let page = undefined;
 
-    let pages = [
+    let { page = undefined } = $props();
+
+    let showDropdown = $state(false);
+    let loaded = $state(false);
+
+    let pages = $state([
         {name: 'Home', route: '/'},
         {name: $currentLanguage == 'en' ? 'About' : 'Over mij', route: '/about'},
         {name: 'Contact', route: '/contact'}
-    ];
+    ]);
 
-    let pageName = '';
+    let pageName = $state('');
 
     function onNavDropdownClick(){
         showDropdown = !showDropdown;
@@ -79,24 +80,26 @@
         }
     }
 
-    beforeUpdate(() => {
-        switch(page.url.pathname){
-            case '/':
-                pageName = 'Home';
-                break;
-            case '/about':
-                if($currentLanguage == 'en'){
-                    pageName = 'About';
-                }else{
-                    pageName = 'Over mij';
-                }
-                break;
-            case '/portfolio':
-                pageName = 'Portfolio';
-                break;
-            case '/contact':
-                pageName = 'Contact';
-                break;
+    $effect(() => {
+        if (page?.url?.pathname) {
+            switch(page.url.pathname){
+                case '/':
+                    pageName = 'Home';
+                    break;
+                case '/about':
+                    if($currentLanguage == 'en'){
+                        pageName = 'About';
+                    }else{
+                        pageName = 'Over mij';
+                    }
+                    break;
+                case '/portfolio':
+                    pageName = 'Portfolio';
+                    break;
+                case '/contact':
+                    pageName = 'Contact';
+                    break;
+            }
         }
     });
 
@@ -137,11 +140,11 @@
         </ul>
     </div>
     <div class="nav-spotlight">
-        <img class="lang-icon" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
+        <img class="lang-icon" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" onclick={changeLang}/>
         <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" target="_blank"><i class="fa-brands fa-linkedin social-icon"></i></a>
         <a href="https://github.com/mrstaneh" target="_blank"><i class="fa-brands fa-github social-icon"></i></a>
     </div>
-    <div class="nav-small-button" on:click={onNavDropdownClick}>
+    <div class="nav-small-button" onclick={onNavDropdownClick}>
         <span class="nav-currentpage-text">{pageName}</span>
         {#if !showDropdown}
             <i class="fa-solid fa-angle-down" in:dropdownout="{{duration: 500}}"></i>
@@ -152,17 +155,17 @@
 </div>
 
 {#if showDropdown}
-    <div class="nav-dropdown-backdrop" on:click={onNavDropdownClick}></div>
+    <div class="nav-dropdown-backdrop" onclick={onNavDropdownClick}></div>
     <div class="nav-dropdown-menu" in:dropdownin="{{duration: 250}}" out:dropdownout="{{duration: 100}}">
         <ul>
             {#each pages as page, i}
-                <li class="nav-dropdown-item-{i}" on:click={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
+                <li class="nav-dropdown-item-{i}" onclick={() => {onItemClick(page.route)}} style="{pageName == page.name ? 'cursor: default;' : ''}"><a href="{page.route}" style="{pageName == page.name ? 'cursor: default; color: #7b7b8f;' : ''}">{page.name}</a></li>
             {/each}
         </ul>
         <div class="nav-dropdown-icons">
-            <img class="lang-icon dropdown-lang-icon-image" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" on:click={changeLang}/>
-            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
-            <a href="https://github.com/mrstaneh" on:click={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image dropdown-icon-github"></i></a>
+            <img class="lang-icon dropdown-lang-icon-image" src="{$currentLanguage == 'en' ? 'gb.svg' : $currentLanguage == 'nl' ? 'nl.svg' : 'gb.svg'}" alt="{$currentLanguage == 'en' ? 'English' : $currentLanguage == 'nl' ? 'Dutch' : 'English'}" onclick={changeLang}/>
+            <a href="https://www.linkedin.com/in/stan-jaworski-5138731a2/" onclick={onNavDropdownClick} target="_blank"><i class="fa-brands fa-linkedin social-icon dropdown-icon-image"></i></a>
+            <a href="https://github.com/mrstaneh" onclick={onNavDropdownClick} target="_blank"><i class="fa-brands fa-github social-icon dropdown-icon-image dropdown-icon-github"></i></a>
         </div>
     </div>
 {/if}

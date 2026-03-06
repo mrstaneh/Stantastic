@@ -1,13 +1,13 @@
 <script>
     import { currentLanguage } from '$lib/stores.js';
 
-    let userEmail = undefined;
-    let userMessage = undefined;
-    let sendingEmail = false;
-    let noEmailNotification = false;
-    let noMessageNotification = false;
-    let sentEmailSuccess = false;
-    let sentEmailFailed = false;
+    let userEmail = $state(undefined);
+    let userMessage = $state(undefined);
+    let sendingEmail = $state(false);
+    let noEmailNotification = $state(false);
+    let noMessageNotification = $state(false);
+    let sentEmailSuccess = $state(false);
+    let sentEmailFailed = $state(false);
 
     async function submitContactForm(){
         if(!sentEmailSuccess && !sentEmailFailed){
@@ -77,7 +77,7 @@
             {/if}
 
             <!-- modify this form HTML and place wherever you want your form -->
-            <form on:submit|preventDefault="{submitContactForm}">
+            <form onsubmit={(e) => { e.preventDefault(); submitContactForm(); }}>
                 {#if noEmailNotification && !noMessageNotification}
                     <div class="form-invalid">
                         <p>
