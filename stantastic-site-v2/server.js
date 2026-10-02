@@ -1,44 +1,36 @@
 import 'dotenv/config'
 
 import { handler } from './build/handler.js';
-import express from 'express';
 import helmet from "helmet";
 import http from 'http';
 import { createTerminus } from '@godaddy/terminus'
 
-const app = express();
-
 // Use helmet with other security headers, but disable CSP
-app.use(
-  helmet({
-    contentSecurityPolicy: false
-  })
-)
-
-// Custom CSP middleware that allows SvelteKit inline scripts
-app.use((req, res, next) => {
-  res.setHeader(
-    'Content-Security-Policy',
-    [
-      "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://kit.fontawesome.com/ https://ka-f.fontawesome.com/",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com/",
-      "connect-src 'self' https://ka-f.fontawesome.com/ https://formspree.io/",
-      "img-src 'self' data:",
-      "object-src 'none'",
-      "base-uri 'self'",
-      "form-action 'self' https://formspree.io/",
-      "frame-ancestors 'none'",
-      "upgrade-insecure-requests"
-    ].join('; ')
-  );
-  next();
+const securityHeaders = helmet({
+  contentSecurityPolicy: false
 });
 
-app.use(handler);
+// Custom CSP that allows SvelteKit inline scripts
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://kit.fontawesome.com/ https://ka-f.fontawesome.com/",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com/",
+  "connect-src 'self' https://ka-f.fontawesome.com/ https://formspree.io/",
+  "img-src 'self' data:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self' https://formspree.io/",
+  "frame-ancestors 'none'",
+  "upgrade-insecure-requests"
+].join('; ');
 
-const server = http.createServer(app)
+const server = http.createServer((req, res) => {
+  securityHeaders(req, res, () => {
+    res.setHeader('Content-Security-Policy', csp);
+    handler(req, res);
+  });
+});
 
 createTerminus(server, {
   signals: ['SIGTERM', 'SIGINT'],
