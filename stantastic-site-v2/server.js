@@ -48,6 +48,9 @@ createTerminus(server, {
   }
 })
 
-server.listen(3000, () => {
-  console.log('Listening on port 3000');
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || '127.0.0.1';
+
+server.listen(port, host, () => {
+  console.log(`Listening on http://${host}:${port}`);
 });

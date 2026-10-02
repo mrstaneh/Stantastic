@@ -1,0 +1,25 @@
+stanjaworski.nl, stantastic.nu {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:3000
+}
+
+www.stanjaworski.nl {
+	redir https://stanjaworski.nl{uri} permanent
+}
+
+www.stantastic.nu {
+	redir https://stantastic.nu{uri} permanent
+}
+
+# OctoPrint (replaces OctoPi's haproxy). Reachable from the home network only,
+# e.g. http://octopi.local or http://<pi-ip>.
+:80 {
+	@outside not remote_ip private_ranges
+	route {
+		respond @outside 403
+		handle_path /webcam/* {
+			reverse_proxy 127.0.0.1:8080
+		}
+		reverse_proxy 127.0.0.1:5000
+	}
+}

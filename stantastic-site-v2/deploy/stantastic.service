@@ -1,0 +1,20 @@
+[Unit]
+Description=Stantastic website
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=stan
+WorkingDirectory=/home/stan/Stantastic/stantastic-site-v2
+ExecStart=/home/stan/.local/node/bin/node server.js
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOST=127.0.0.1
+Environment=PROTOCOL_HEADER=x-forwarded-proto
+Environment=HOST_HEADER=x-forwarded-host
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
