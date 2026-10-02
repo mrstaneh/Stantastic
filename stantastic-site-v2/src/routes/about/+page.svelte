@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>{$currentLanguage == 'en' ? 'About' : 'Over mij'} - Stan Jaworski</title>
+	<title>{$currentLanguage == 'en' ? 'About' : 'Over mij'} - Stantastic</title>
 </svelte:head>
 
 <section class="section-base" id="about">
@@ -14,19 +14,23 @@
     <div class="section-content">
         <div class="section-text">
             {#if $currentLanguage == 'en'}
-                <p>Hello! My name is Stan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt at metus sit amet pulvinar. Proin feugiat consequat orci, ut bibendum velit venenatis et. Sed semper iaculis sem eget volutpat.</p>
-                <p>Nam tortor lorem, accumsan vitae diam at, rutrum interdum ex. Praesent auctor sollicitudin malesuada. Sed ac sem augue. Donec porta pretium massa, at ultricies dolor rhoncus a.</p>
-                <p>Ut finibus eget erat ut elementum. Quisque bibendum dignissim nisi, quis gravida nisl egestas ac. Etiam dictum, tortor vitae commodo rhoncus, leo mauris ultricies urna.</p>
+                <p>Hello! I'm Stan, a software developer. I currently work at SparkTSL, a company that specializes in solutions for healthcare providers and consumers, where I work as a fullstack developer.</p>
+                <p>These days I also work a lot with AI. Using tools like Semantic Kernel, I build applications that connect language models to existing software and data.</p>
+                <p>Next to my job, I'm open to smaller freelance projects in my spare time. Think apps and websites, but also integrations between systems, web hosting, DevOps and other software-related work. The only exception is healthcare projects, since that's what I already work on every day ;-) Have an idea or need some help? Feel free to <a href="/contact">get in touch</a>!</p>
                 <p>Here are a few technologies I have been working with:</p>
             {:else if $currentLanguage == 'nl'}
-                <p>Hallo! Ik ben Stan, een software developer. Momenteel ben ik werkend bij SparkTSL, een bedrijf dat zich specializeert in oplossingen voor healthcare providers en consumers. Hier ben ik als fullstack developer aan de gang.</p>
-                <p>Hier zijn wat technologiën waarmee ik aan het werken ben:</p>
+                <p>Hallo! Ik ben Stan, een software developer. Momenteel werk ik bij SparkTSL, een bedrijf dat zich specialiseert in oplossingen voor healthcare providers en consumers. Daar ben ik aan de slag als fullstack developer.</p>
+                <p>Tegenwoordig werk ik ook veel met AI. Met tools zoals Semantic Kernel bouw ik toepassingen die taalmodellen koppelen aan bestaande software en data.</p>
+                <p>Naast mijn baan sta ik open voor kleinere freelance projecten in mijn vrije tijd. Denk aan apps en websites, maar ook aan koppelingen tussen systemen, webhosting, DevOps en ander softwarewerk. Alleen zorg-opdrachten neem ik niet aan, want daar werk ik dagelijks al mee ;-) Heb je een idee of kun je hulp gebruiken? Neem gerust <a href="/contact">contact</a> op!</p>
+                <p>Hier zijn wat technologieën waarmee ik werk:</p>
             {/if}
             <ul>
+                <li>AI / Semantic Kernel</li>
                 <li>Svelte</li>
                 <li>Objective C / iOS</li>
                 <li>C# / .NET Core</li>
                 <li>Java</li>
+                <li>Kotlin</li>
                 <li>Python</li>
                 <li>Swift</li>
             </ul>

@@ -60,7 +60,7 @@
 </script>
 
 <svelte:head>
-	<title>Contact - Stan Jaworski</title>
+	<title>Contact - Stantastic</title>
 </svelte:head>
 
 <section class="section-base" id="about">

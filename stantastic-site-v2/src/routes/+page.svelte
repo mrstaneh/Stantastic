@@ -178,7 +178,7 @@
 </script>
 
 <svelte:head>
-	<title>Home - Stan Jaworski</title>
+	<title>Home - Stantastic</title>
 </svelte:head>
 
 <svelte:window bind:scrollY={currentY}/>
@@ -186,7 +186,7 @@
 <canvas id="canvas" style="position: absolute; overflow-x: hidden; z-index: -1;">
 </canvas>
 <div class="home-banner">
-	<h1>Stan</h1><h1 class="h1-p2">Jaworski</h1>
+	<h1>Stan</h1><h1 class="h1-p2">tastic</h1>
 	{#if $currentLanguage == 'en'}
 		<p class="subtitle" in:fade={{duration: 250}} >
 			Tailor-made software
